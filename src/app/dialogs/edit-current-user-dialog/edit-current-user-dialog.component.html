@@ -1,0 +1,88 @@
+
+<mat-progress-bar
+  *ngIf="showSpinner"
+  mode="indeterminate"
+  color="warn"
+  style="top:0; z-index: 5000;"
+>
+</mat-progress-bar>
+
+<mat-toolbar mat-dialog-title role="toolbar" class="zero-padding" fxLayout="row" fxLayoutAlign="space-between center" class="mat-elevation-z8">
+  <span fxLayoutAlign="start center">Modifica Email</span>
+  <mat-icon (click)="noAdd()" class="pointer" style="font-size: 20px" >close</mat-icon>
+</mat-toolbar>
+
+
+
+<mat-dialog-content class="dialog-content">
+
+  <mat-card-content>
+
+
+
+
+
+    <form *ngIf="!codeVisual" #form style="text-align: center"  [formGroup]="formcredeziali" (submit)="passaCodice()">
+      <div>
+        <mat-form-field style="width: 60%;margin-bottom: 15px; ">
+          <input matInput placeholder="Email" name="email" formControlName="email" required>
+          <div *ngIf="formcredeziali!.get('email')!.errors && formcredeziali!.get('email')!.errors!['emailexists']"
+               style="color: red">La mail è già presente</div>
+        </mat-form-field>
+      </div>
+
+
+      <div class="padding-t" >
+        <button class="button-primary" mat-button  style="width: 20%">Conferma</button>
+      </div>
+
+    </form>
+
+    <mat-card-header *ngIf="codeVisual" style="text-align: center">
+      <h1>Abbiamo inviato un codice a: {{emailSended}}</h1>
+    </mat-card-header>
+
+    <form *ngIf="codeVisual"
+          (ngSubmit)="formC.form.valid && salvaUtente()"
+          #formC="ngForm" style="text-align: center">
+
+
+
+        <mat-form-field  class="form-control">
+          <input matInput placeholder="Inserisci il codice"
+                 type="text"
+                 name="code"
+                 [(ngModel)]="formCode.code"
+                 required>
+
+        </mat-form-field>
+
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="formC.submitted && wrongCode"
+          style="color: red; text-align: center; margin-bottom: 25px; font-weight: bold; font-size: medium"
+        >
+          Codice errato!
+        </div>
+      </div>
+
+      <button mat-stroked-button color="accent" class="btn-block">Conferma</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </mat-card-content>
+
+</mat-dialog-content>

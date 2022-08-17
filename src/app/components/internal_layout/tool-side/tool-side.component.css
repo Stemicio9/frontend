@@ -1,0 +1,152 @@
+
+/*
+.position-fixed{
+  position: fixed
+}
+
+.content {
+  margin-top: 58px;
+  height: calc(100% - 64px);
+  overflow: auto;
+}
+
+.mat-toolbar {
+  min-width: calc(100% - 250px);
+}
+
+.mat-big-spacer {
+  flex: 1 1 auto;
+}
+.mat-sidenav{
+  width: 250px;
+}
+.center-title{
+  margin: 0 auto;
+}
+.mat-drawer.mat-drawer-push{
+  background-image: linear-gradient(180deg,#3f51b5,#396afc);
+  color: white;
+}
+
+.mat-drawer-push{
+
+}
+
+.mat-drawer.mat-drawer-side{
+  background-image: linear-gradient(180deg,#3f51b5,#396afc);
+  color: white;
+}
+
+mat-nav-list > a {
+  height: 60px;
+}
+
+.mat-icon-our-class {
+  margin-right: 40px;
+}
+
+
+.menu-button:hover {
+  background-color: rgba(55,55,55,0.4);
+}
+
+.menu-button {
+  padding-left: 15px;
+}
+
+
+
+.active {
+  background-color: rgba(55,55,55,0.4);
+}
+
+
+.m-top {
+  margin-top: 15px;
+}
+
+
+*/
+
+
+mat-toolbar {
+  background-image: linear-gradient(90deg,#222222,#444444);
+/*  background: linear-gradient(45deg,#FA6F01, #F55301, #F03801,#EB1C01); */
+/*  background: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% ); */
+  color: white;
+}
+
+mat-sidenav {
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background-image: linear-gradient(180deg,#222222,#444444);
+
+ /* background: radial-gradient( circle 610px at 5.2% 51.6%,  rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% ); */
+
+/*  background: linear-gradient(45deg,#EB1C01, #F03801, #F55301, #FA6F01); */
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  height: calc(100vh - 130px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  padding: 16px;
+  overflow: auto;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+
+.avatar {
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.name {
+  margin-top: 8px;
+  font-weight: normal;
+}
+
+.designation {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.active {
+  background-color: rgba(255,255,255,0.8);
+  color: #3f51b5;
+}
+
+
+a {
+  color: white;
+}

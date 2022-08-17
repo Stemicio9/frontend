@@ -1,0 +1,175 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$MPV-FE-primary: mat.define-palette(mat.$indigo-palette);
+$MPV-FE-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$MPV-FE-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$MPV-FE-theme: mat.define-light-theme((
+  color: (
+    primary: $MPV-FE-primary,
+    accent: $MPV-FE-accent,
+    warn: $MPV-FE-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($MPV-FE-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main-content {
+  border-radius: 10px;
+  margin-top: 32px;
+  margin-left: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+/*  font-size: 2rem; */
+  color: #3e3e3e;
+}
+
+
+.row{
+  width: 100%;
+}
+
+.row-centered {
+  width: 100%;
+  margin:auto;
+}
+
+.thirdquartersrow {
+  margin-left: 5%;
+  width: 75%;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding: 5px;
+}
+
+.table-container{
+ padding-left: 5%;
+ padding-right: 5%;
+}
+
+.floating-bottom-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  float: right;
+}
+.floating-top-right{
+  float: right;
+}
+
+.floating-top-left {
+  position: fixed;
+  top: 20px;
+
+}
+.left-text{
+  text-align: start !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.p-left-15 {
+  padding-left: 15px;
+}
+
+.p-left-25 {
+  padding-left: 25px;
+}
+
+.button-primary{
+  background-color: #444444;
+  color: white;
+}
+
+.button-danger {
+  background-color: red;
+  color:white;
+}
+
+
+.wrapper-less-width {
+  width: 100%;
+  height: 80%;
+}
+
+.wrapper-less-height-a-lot {
+  width: 100%;
+  height: 40%;
+}
+
+
+.wrapper-custom {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.not-scrollable {
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1002;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.spinner-wrapper {
+  justify-content: center;
+  justify-items: center;
+}
+
+
+
+.badge-color {
+  color: #ffcd3c;
+}
+
+
+.custom-dialog-container .mat-dialog-container {
+   padding:0;
+  overflow-x: hidden;
+}

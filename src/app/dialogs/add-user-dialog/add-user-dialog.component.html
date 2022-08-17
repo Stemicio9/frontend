@@ -1,0 +1,79 @@
+
+<mat-toolbar mat-dialog-title role="toolbar" class="zero-padding" fxLayout="row" fxLayoutAlign="space-between center" class="mat-elevation-z8">
+  <span fxLayoutAlign="start center">Crea nuovo utente</span>
+  <mat-icon (click)="noAdd()" class="pointer" style="font-size: 20px" >close</mat-icon>
+</mat-toolbar>
+
+<mat-dialog-content class="dialog-content">
+
+    <mat-card-content>
+
+
+      <mat-stepper style="margin-left: 10%; margin-right: 10%" #stepper [linear]="true" >
+        <mat-step [stepControl]="formcredeziali" errorMessage="Campi non compilati!">
+          <form style="text-align: center" class="example-form" [formGroup]="formcredeziali">
+          <ng-template matStepLabel>Inserisci le credenziali</ng-template>
+          <div>
+            <mat-form-field appearance="fill" style="width: 80%;margin-bottom: 5px;margin-top: 5px" >
+              <mat-label>Ruolo dell'utente</mat-label>
+              <select matNativeControl  name="role" required formControlName="ruolo" >
+                <option value="ADMIN">Amministratore</option>
+                <option value="CLIENTE">Cliente</option>
+                <option value="STORE">Store</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field style="width: 80%; margin-bottom: 5px;">
+              <input matInput placeholder="Username" name="username" required formControlName="username" [(ngModel)]="data.username">
+              <div *ngIf="formcredeziali!.get('username')!.errors && formcredeziali!.get('username')!.errors!['userexists']"
+                    style="color: red">Utente già presente</div>
+            </mat-form-field>
+          </div>
+
+            <div>
+              <mat-form-field style="width: 80%;margin-bottom: 5px; ">
+                <input matInput placeholder="Email" name="email" formControlName="email" [(ngModel)]="data.email">
+                <div *ngIf="formcredeziali!.get('email')!.errors && formcredeziali!.get('email')!.errors!['emailexists']"
+                      style="color: red">La mail è già presente</div>
+              </mat-form-field>
+            </div>
+
+          <div>
+            <mat-form-field style="width: 80%;margin-bottom: 5px">
+              <input type="password" matInput placeholder="Password"  name="password" required formControlName="password">
+
+            </mat-form-field>
+          </div>
+
+          <div>
+
+            <mat-form-field style="width: 80%">
+              <input type="password" matInput placeholder="Conferma password"  name="confirm" required formControlName="conferma">
+              <div *ngIf="formcredeziali!.get('conferma')!.errors && formcredeziali!.get('conferma')!.errors!['matching']"
+                    style="color: red">Password e conferma non coincidono</div>
+            </mat-form-field>
+          </div>
+          <!--   <div *ngIf="(!formcredeziali.controls.username.valid) && formcredeziali.controls.username.value !== ''" style="color: red">L'utente è già presente</div> -->
+            <button class="button-primary" style="margin-top: 7px" mat-button matStepperNext>Avanti</button>
+          </form>
+        </mat-step>
+
+
+
+        <mat-step>
+          <form style="text-align: center" class="example-form">
+          <ng-template matStepLabel>Fatto</ng-template>
+          <div class="padding-t" >
+            <button class="button-primary" mat-button (click)="salvaUtente()" style="width: 20%">Crea utente</button>
+          </div>
+            <button  class="button-primary" style="margin-top: 25px" mat-button matStepperPrevious>Indietro</button>
+          </form>
+        </mat-step>
+
+
+
+      </mat-stepper>
+    </mat-card-content>
+</mat-dialog-content>

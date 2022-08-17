@@ -1,0 +1,61 @@
+
+
+<div class="wrapper-less-height-a-lot ">
+  <div class="overlay" *ngIf="showSpinner">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="showSpinner">
+    <div fxLayout="column" fxFlexFill>
+
+      <div class="row">
+        <div class="">
+          <ngx-datatable
+            class="material"
+            style="top: 52px;"
+            [headerHeight]="50"
+            [footerHeight]="0"
+            [rowHeight]="50"
+            [rows]="rows"
+            [columnMode]="'force'"
+          >
+            <ngx-datatable-column name="Nome Negozio" prop="negozio"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Importo Giornaliero" prop="importoGiornaliero">
+              <ng-template let-row="row" ngx-datatable-cell-template>{{row.importoGiornaliero | currency: 'EUR' | replace:'.':','}}</ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Importo Annuale" prop="importoAnnuale">
+              <ng-template let-row="row" ngx-datatable-cell-template>{{row.importoAnnuale | currency: 'EUR' | replace:'.':','}}</ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Importo Ultimi 90" prop="importoUltimi90">
+              <ng-template let-row="row" ngx-datatable-cell-template>{{row.importoUltimi90 | currency: 'EUR' | replace:'.':','}}</ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Scontrini" prop="numeroScontrini"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Num. e Val. S.I." prop="numSi">
+              <ng-template let-row="row" ngx-datatable-cell-template>{{row.numSi}} - {{row.valSi}}</ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Prezzo Medio" prop="prezzoMedio">
+              <ng-template let-row="row" ngx-datatable-cell-template>{{row.prezzoMedio | currency: 'EUR' | replace:'.':','}}</ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Ultima Ora" prop="ultimaOra" [width]="100">
+              <ng-template let-row="row" ngx-datatable-cell-template>{{row.ultimaOra |date: 'HH:mm'}}</ng-template>
+            </ngx-datatable-column>
+
+          </ngx-datatable>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

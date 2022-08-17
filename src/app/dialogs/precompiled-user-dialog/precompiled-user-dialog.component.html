@@ -1,0 +1,124 @@
+
+<mat-toolbar mat-dialog-title role="toolbar" class="zero-padding" fxLayout="row" fxLayoutAlign="space-between center" class="mat-elevation-z8">
+  <span fxLayoutAlign="start center">Modifica utente</span>
+  <mat-icon (click)="noAdd()" class="pointer" style="font-size: 20px" >close</mat-icon>
+</mat-toolbar>
+
+
+
+ <!-- <mat-dialog-content class="dialog-content">
+  <form #myForm="ngForm" style="text-align: center">
+    <mat-card-content>
+
+      <div>
+        <mat-form-field appearance="fill" style="width: 80%">
+          <mat-label>Ruolo dell'utente</mat-label>
+          <select matNativeControl [(ngModel)]="data.role" name="role">
+            <option value="ADMIN">Amministratore</option>
+            <option value="CLIENTE">Utente</option>
+          </select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field style="width: 80%">
+          <input [disabled]="true" matInput placeholder="Username" [(ngModel)]="data.username" name="username" id="username" #username>
+
+        </mat-form-field>
+      </div>
+
+    <div>
+        <mat-form-field style="width: 80%">
+          <input  type="password" matInput placeholder="Password" [(ngModel)]="data.password" name="password" id="password">
+          <div [hidden]="!showerror"
+               style="color: red">La password deve coincidere con la conferma</div>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field style="width: 80%">
+          <input type="password" matInput placeholder="Conferma password" [(ngModel)]="confirm" name="confirm" id="confirm" (change)="verifica()">
+          <div [hidden]="!showerror"
+               style="color: red">La password deve coincidere con la conferma</div>
+        </mat-form-field>
+      </div>
+
+
+
+
+      <div style="margin-bottom: 25px" class="padding-t" >
+        <button [disabled]="data.password !== confirm && data.password !== undefined" class="button-primary" mat-button [mat-dialog-close]="data" style="width: 60%">Modifica utente</button>
+      </div>
+    </mat-card-content>
+  </form>
+
+</mat-dialog-content>  -->
+
+
+
+
+
+
+
+<mat-dialog-content class="dialog-content">
+
+  <mat-card-content>
+
+
+    <mat-stepper style="margin-left: 10%; margin-right: 10%" #stepper  [linear]="true">
+      <mat-step [stepControl]="formcredeziali" errorMessage="Campi non compilati!">
+        <form style="text-align: center" class="example-form" [formGroup]="formcredeziali">
+          <ng-template matStepLabel>Inserisci le credenziali</ng-template>
+          <div>
+            <mat-form-field appearance="fill" style="width: 80%;margin-bottom: 25px;margin-top: 20px" >
+              <mat-label>Ruolo dell'utente</mat-label>
+              <select matNativeControl  name="role" required formControlName="ruolo" [ngModel]="data.role">
+                <option value="ADMIN">Amministratore</option>
+                <option value="CLIENTE">Utente</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field style="width: 80%;margin-bottom: 25px">
+              <input readonly matInput placeholder="Username" name="username" required formControlName="username" [ngModel]="data.username">
+
+            </mat-form-field>
+          </div>
+
+
+          <div>
+            <mat-form-field style="width: 80%;margin-bottom: 25px; ">
+              <input matInput placeholder="Email" name="email" formControlName="email" [ngModel]="data.email">
+              <div *ngIf="formcredeziali!.get('email')!.errors && formcredeziali!.get('email')!.errors!['emailexists']"
+                   style="color: red">La mail è già presente</div>
+            </mat-form-field>
+          </div>
+
+          <button class="button-primary" style="margin-top: 7px" mat-button matStepperNext>Avanti</button>
+        </form>
+      </mat-step>
+
+
+
+
+
+
+
+      <mat-step>
+        <form style="text-align: center" class="example-form">
+          <ng-template matStepLabel>Fatto</ng-template>
+          <div class="padding-t" >
+            <button class="button-primary" mat-button (click)="salvaUtente()" style="width: 20%">Modifica utente</button>
+          </div>
+          <button  class="button-primary" style="margin-top: 25px" mat-button matStepperPrevious>Indietro</button>
+        </form>
+      </mat-step>
+
+
+
+</mat-stepper>
+
+</mat-card-content>
+
+</mat-dialog-content>

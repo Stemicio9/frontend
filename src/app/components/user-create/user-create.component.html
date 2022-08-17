@@ -1,0 +1,119 @@
+<div class="wrapper-less-height-a-lot">
+  <div class="overlay" *ngIf="showSpinner">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="showSpinner">
+    <div fxLayout="column" fxFlexFill>
+      <div class="row" style="display: flex">
+        <button
+          mat-button
+          style="margin-right: 25px"
+          class="button-primary"
+          (click)="userCreate()"
+        >
+          <span>Aggiungi utente</span>
+        </button>
+
+        <button
+          (click)="editemail()"
+          mat-button
+          style="margin-right: 25px; background-color: lightgray"
+          class="button-primary"
+          [disabled]="true"
+        >
+          <span>Modifica Email</span>
+        </button>
+
+        <button
+          (click)="editpasswordcurrentuser()"
+          mat-button
+          class="button-primary"
+          style="background-color: lightgray"
+          [disabled]="true"
+        >
+          <span>Modifica password</span>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="">
+          <ngx-datatable
+            class="material fullscreen"
+            style="top: 52px"
+            [headerHeight]="50"
+            [footerHeight]="0"
+            [rowHeight]="50"
+            [rows]="rows"
+            [columnMode]="'force'"
+          >
+            <ngx-datatable-column
+              name="Nome Utente"
+              prop="username"
+              [width]="30"
+            ></ngx-datatable-column>
+            <ngx-datatable-column
+              name="Email"
+              prop="email"
+              [width]="80"
+            ></ngx-datatable-column>
+            <ngx-datatable-column
+              name="Ruolo"
+              prop="role"
+              [width]="40"
+            ></ngx-datatable-column>
+            <ngx-datatable-column
+              name="Ultimo accesso"
+              prop="lastlogin"
+              [width]="40"
+            >
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <strong>{{ row.lastlogin | date: "dd-MM-yyyy HH:mm" }}</strong>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [width]="30">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <button
+                  (click)="currentUser(row)"
+                  style="cursor: pointer"
+                  mat-button
+                  class="button-primary"
+                >
+                  Modifica
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column [width]="100">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <button
+                  (click)="editpassword(row)"
+                  style="cursor: pointer"
+                  mat-button
+                  class="button-primary"
+                >
+                  Modifica password
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <button
+                  (click)="removeUser(row)"
+                  style="cursor: pointer"
+                  mat-button
+                  class="button-danger"
+                >
+                  Rimuovi
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

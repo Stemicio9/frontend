@@ -1,0 +1,173 @@
+<!-- <mat-toolbar color="primary">
+  <div fxLayout="row">
+  <span>Ventura</span>
+
+  <div fxShow="true" fxHide.lt-md="true" fxFlexFill fxLayoutAlign="end none">
+  <a *ngFor="let item of menuItems" [routerLink]="[item.path]" mat-button>{{item.title}}</a>
+  </div>
+
+
+  <div fxShow="true" fxHide.gt-sm="true">
+    <a mat-button (click)="sidenav.toggle()">Show Side Menu</a>
+  </div>
+  </div>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav fxLayout="column" mode="side" opened="false">
+    <div fxLayout="column">
+      <a *ngFor="let item of menuItems" [routerLink]="[item.path]" mat-button>{{item.title}}</a>
+    </div>ce
+  </mat-sidenav>
+  <mat-sidenav-content fxFlexFill>
+
+      <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<!--
+ VECCHIA VERSIONE
+<mat-sidenav-container fullscreen>
+
+
+  <mat-sidenav #sidenav fixedInViewport="true"
+                mode="side"
+               [opened]="true" >
+    <mat-toolbar color="primary">
+     <h3  class="center-title">Logo qui</h3>
+    </mat-toolbar>
+    <div>
+     <mat-nav-list fxLayout="column" class="m-top">
+
+       <button mat-button style="height: 0; position: absolute"></button>
+
+
+       <a fxLayoutAlign="start center" *ngFor="let item of menuItems" class="left-text menu-button"
+           style="font-size: large;"
+
+           [routerLink]="[item.path]"
+           routerLinkActive="active"
+           >
+          <mat-icon class="mat-icon-our-class"  aria-label="Toggle icon">{{item.icon}}</mat-icon>
+          {{item.title}}
+        </a>
+
+
+    </mat-nav-list>
+    </div>
+
+  </mat-sidenav>
+
+
+
+  <mat-sidenav-content>
+    <mat-toolbar fxLayout="row" color="primary" class="position-fixed" style="z-index: 9999"  >
+      <div fxLayoutAlign="start center" fxFlex>
+      <a
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="sidenav.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </a>
+      </div>
+
+
+      <div fxFlex fxLayout="row"  fxLayoutAlign="center center" fxLayoutGap="20px">
+        <span  fxLayoutAlign="start center">Ventura</span>
+
+
+
+        <div fxFlex fxShow="true" fxHide.lt-md="true" fxLayoutAlign="center center">
+          <a *ngFor="let item of menuItems" [routerLink]="[item.path]" mat-button >{{item.title}}</a>
+        </div>
+
+
+
+      </div>
+
+
+      <div fxFlex fxLayoutAlign="end center">
+        <mat-icon (click)="logout()" class="pointer" style="font-size: 20px" >power_settings_new</mat-icon>
+      </div>
+
+    </mat-toolbar>
+
+    <div class="content" fxLayoutAlign="start start" >
+      <router-outlet></router-outlet>
+     </div>
+
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>
+-->
+
+
+<mat-toolbar fxLayout="row" class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+
+  <div  fxLayoutAlign="start center" style="padding-left: 50px">
+    <span style="margin-right: 25px"> MPV-FE </span>
+    <mat-icon (click)="logout()" class="pointer" style="font-size: 20px" >power_settings_new</mat-icon>
+  </div>
+  <div  *ngIf="!(sidenav.mode === 'over')" fxLayoutAlign="end center" style=" width: 100%">
+    <span style="font-size: medium" > Sei loggato come: &nbsp;</span>
+    <span> {{utenteloggato}} </span>
+
+  </div>
+
+
+</mat-toolbar>
+
+
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+
+    <button routerLinkActive="active" *ngFor="let item of menuItems" [routerLink]="[item.path]" mat-button class="menu-button">
+      <span>{{item.title}}</span>
+    </button>
+
+    <div style="margin: auto"></div>
+
+
+
+
+<!--     <div style="margin: auto; position:absolute; bottom:0;">
+      <h5 style="text-align: start">
+        Ditta Domenico Ventura S.r.l.
+        <br>
+        Sede Legale: Piazza Francese, 2 - 80133 - Napoli
+        <br>
+        Sede Operativa: Interporto di Nola Lotto D/1 int. N°501/502/503 - 80035 - Nola (NA)
+        <br>
+        Per info: <a (click)="skipEvent = true;" target="_blank" href="mailto:supportoweb@dittaventura.it">supportoweb@dittaventura.it</a>
+      </h5>
+    </div> -->
+
+
+
+
+
+
+
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
